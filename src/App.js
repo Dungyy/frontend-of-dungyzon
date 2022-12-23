@@ -1,23 +1,28 @@
-import logo from './logo.svg';
-import './App.css';
+import React, { useEffect, useState } from "react";
+import "./App.css";
+import Axios from "axios";
 
 function App() {
+  const [data, setData] = useState("");
+
+  const fetchData = () => {
+    Axios.get(`https://dungy-amazon-scraper.herokuapp.com/search/${data}`).then(
+      (res) => {
+        console.log(res.data);
+      }
+    );
+  };
+
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <h1>YO</h1>
+      <input
+        placeholder="text"
+        onChange={(event) => {
+          setData(event.target.value);
+        }}
+      />
+      <button onClick={fetchData}>Send </button>
     </div>
   );
 }
