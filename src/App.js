@@ -12,7 +12,7 @@ function App() {
   const fetchData = async () => {
     try {
       setIsLoading(true);
-      const res = await Axios.get(`http://localhost:5000/search/${data}`);
+      const res = await Axios.get(`https://dungyzonapi.onrender.com/search/${data}`);
       setSearchResults(res.data.results);
     } catch (error) {
       console.log(error);
@@ -40,15 +40,15 @@ function App() {
         }}
       >
         <div style={{ alignItems: "center", fontSize: "large" }}>
-          <h1 style={{ fontSize: "60px"}}>DINGYZON Search</h1>
+          <h1 style={{ fontSize: "60px" }}>DINGYZON</h1>
           <br />
-          <div className="toggle-container">
+          {/* <div className="toggle-container">
             <label className="toggle-label">Night Mode</label>
             <label className="switch">
               <input type="checkbox" onChange={toggleNightMode} />
               <span className="slider round"></span>
             </label>
-          </div>
+          </div> */}
         </div>
       </div>
       <div className="search-card">
@@ -74,6 +74,7 @@ function App() {
             justifyContent: "center",
             alignItems: "center",
             height: "100vh",
+            marginBottom: "20rem"
           }}
         >
           <div style={{ alignItems: "center" }}>
@@ -87,28 +88,28 @@ function App() {
           </div>
         </div>
       ) : searchResults.length > 0 ? (
-        
         <div className="search-results">
-          
           {searchResults.map((result) => (
             <div className="card" key={result.position}>
               <div className="card-image">
                 <img src={result.image} alt={result.image} />
               </div>
               <div className="card-content">
-                <h2 className="card-title">{result.name}</h2>
+                <h2 className="card-title" style={{ fontSize: "23px" }}>
+                  {result.name}
+                </h2>
                 <p className="card-price">
                   Price:{" "}
                   <span style={{ color: "green" }}>{result.price_string} </span>
                 </p>
-                <p className="card-stars">
-                  Stars:{result.stars}
-                </p>
+                <p className="card-stars">Stars:{result.stars}</p>
                 <p className="card-reviews">
                   Total Reviews: {result.total_reviews}
                 </p>
                 {result.has_prime && (
-                  <p style={{ color: "gold" }} className="card-prime">Prime available!</p>
+                  <p style={{ color: "gold" }} className="card-prime">
+                    Prime available!
+                  </p>
                 )}
               </div>
             </div>
@@ -120,10 +121,10 @@ function App() {
             display: "flex",
             justifyContent: "center",
             alignItems: "center",
-            marginTop: "20rem",
+            marginTop: "5rem",
           }}
         >
-          <h1>Search for yor favorite Amazon product with DINGYZON</h1>
+          <h2>A quick and easy search for any product :)</h2>
         </div>
       )}
     </div>
