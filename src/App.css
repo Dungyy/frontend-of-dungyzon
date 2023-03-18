@@ -1,42 +1,64 @@
-html { background-color: #000;}
+
+.search-card {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
 
 .search-input {
-  width: 70%;
+  width: 1000px;
   height: 50px;
-  font-size: 24px;
+  font-size: 16px;
   padding: 10px;
-  margin-right: 10px;
-  border: none;
-  border-radius: 5px 0 0 5px;
+  border: 1px solid #ddd;
+  border-radius: 15px 0 0 15px;
+  outline: none;
+}
+
+.search-input:focus {
+  border: 1px solid #f0c14b;
 }
 
 .search-button {
-  height: 50px;
-  font-size: 24px;
-  padding: 10px;
+  height: 73px;
+  font-size: 16px;
+  padding: 10px 20px;
   background-color: #f0c14b;
   border: none;
   border-radius: 0 5px 5px 0;
   cursor: pointer;
+  color: #fff;
+  text-transform: uppercase;
 }
+
+.search-button:hover {
+  background-color: #d4a63f;
+}
+
+.search-button:active {
+  background-color: #b0882f;
+  transform: translateY(1px);
+}
+
 
 .search-results {
   display: flex;
   flex-wrap: wrap;
   justify-content: space-between;
-  margin-top: 20px;
+  margin-top: 50px;
 }
 
 .card {
-  width: 30%;
+  width: 13%;
   margin-bottom: 20px;
-  box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.2);
+  box-shadow: 0 2px 4px 0 #6e6e6e;
   border-radius: 5px;
+  font-size: 30px;
 }
 
 .card-image img {
   width: 100%;
-  height: 250px;
+  height: 300px;
   object-fit: contain;
 }
 
@@ -45,14 +67,14 @@ html { background-color: #000;}
 }
 
 .card-title {
-  font-size: 20px;
+  font-size: 35px;
   margin-bottom: 10px;
 }
 
 .card-price {
-  font-size: 16px;
   margin-bottom: 0;
 }
+
 .App {
   background-color: #fff;
   color: #000;

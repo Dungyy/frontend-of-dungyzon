@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import "./App.css";
 import Axios from "axios";
+import { SpinnerDiamond } from "spinners-react";
 
 function App() {
   const [data, setData] = useState("");
@@ -31,30 +32,64 @@ function App() {
 
   return (
     <div className={isNightMode ? "App night-mode" : "App"}>
-      <h1>Amazon Product Search</h1>
-      <div className="toggle-container">
-        <label className="toggle-label">Night Mode</label>
-        <label className="switch">
-          <input type="checkbox" onChange={toggleNightMode} />
-          <span className="slider round"></span>
-        </label>
+      <div
+        style={{
+          display: "flex",
+          justifyContent: "center",
+          alignItems: "center",
+        }}
+      >
+        <div style={{ alignItems: "center", fontSize: "large" }}>
+          <h1 style={{ fontSize: "60px"}}>DINGYZON Search</h1>
+          <br />
+          <div className="toggle-container">
+            <label className="toggle-label">Night Mode</label>
+            <label className="switch">
+              <input type="checkbox" onChange={toggleNightMode} />
+              <span className="slider round"></span>
+            </label>
+          </div>
+        </div>
       </div>
-      <form onSubmit={handleSubmit}>
-        <input
-          className="search-input"
-          placeholder="Search.."
-          onChange={(event) => {
-            setData(event.target.value);
-          }}
-        />
-        <button className="search-button" type="submit">
-          Search
-        </button>
-      </form>
+      <div className="search-card">
+        <form onSubmit={handleSubmit}>
+          <input
+            style={{ maxWidth: "40rem" }}
+            className="search-input"
+            placeholder="Search.."
+            onChange={(event) => {
+              setData(event.target.value);
+            }}
+          />
+
+          <button className="search-button" type="submit">
+            Search
+          </button>
+        </form>
+      </div>
       {isLoading ? (
-        <h2>Loading...</h2>
+        <div
+          style={{
+            display: "flex",
+            justifyContent: "center",
+            alignItems: "center",
+            height: "100vh",
+          }}
+        >
+          <div style={{ alignItems: "center" }}>
+            <SpinnerDiamond
+              size={200}
+              thickness={199}
+              speed={98}
+              color="#f0c14b"
+              secondaryColor="rgba(57, 172, 78, 1)"
+            />
+          </div>
+        </div>
       ) : searchResults.length > 0 ? (
+        
         <div className="search-results">
+          
           {searchResults.map((result) => (
             <div className="card" key={result.position}>
               <div className="card-image">
@@ -62,20 +97,34 @@ function App() {
               </div>
               <div className="card-content">
                 <h2 className="card-title">{result.name}</h2>
-                <p className="card-price">Price: {result.price_string}</p>
-                <p className="card-stars">Stars: {result.stars}</p>
+                <p className="card-price">
+                  Price:{" "}
+                  <span style={{ color: "green" }}>{result.price_string} </span>
+                </p>
+                <p className="card-stars">
+                  Stars:{result.stars}
+                </p>
                 <p className="card-reviews">
                   Total Reviews: {result.total_reviews}
                 </p>
                 {result.has_prime && (
-                  <p className="card-prime">Prime available!</p>
+                  <p style={{ color: "gold" }} className="card-prime">Prime available!</p>
                 )}
               </div>
             </div>
           ))}
         </div>
       ) : (
-        <h2>Search for yor favorite Amazon product with DINGYZON</h2>
+        <div
+          style={{
+            display: "flex",
+            justifyContent: "center",
+            alignItems: "center",
+            marginTop: "20rem",
+          }}
+        >
+          <h1>Search for yor favorite Amazon product with DINGYZON</h1>
+        </div>
       )}
     </div>
   );
