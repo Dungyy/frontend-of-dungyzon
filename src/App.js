@@ -7,7 +7,7 @@ function App() {
   const [data, setData] = useState("");
   const [searchResults, setSearchResults] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
-  const [isNightMode, setIsNightMode] = useState(false);
+  // const [isNightMode, setIsNightMode] = useState(false);
 
   const fetchData = async () => {
     try {
@@ -26,12 +26,12 @@ function App() {
     fetchData();
   };
 
-  const toggleNightMode = () => {
-    setIsNightMode(!isNightMode);
-  };
+  // const toggleNightMode = () => {
+  //   setIsNightMode(!isNightMode);
+  // };
 
   return (
-    <div className={isNightMode ? "App night-mode" : "App"}>
+    <div className={"App"}>
       <div
         style={{
           display: "flex",
