@@ -82,8 +82,8 @@ function App() {
               size={200}
               thickness={199}
               speed={98}
-              color="#f0c14b"
-              secondaryColor="rgba(57, 172, 78, 1)"
+              color="#4b69f0"
+              secondaryColor="grey"
             />
           </div>
         </div>

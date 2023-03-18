@@ -10,20 +10,20 @@
   height: 50px;
   font-size: 16px;
   padding: 10px;
-  border: 1px solid #ddd;
+  border: 1px solid #4b69f0;
   border-radius: 15px 0 0 15px;
   outline: none;
 }
 
 .search-input:focus {
-  border: 1px solid #f0c14b;
+  border: 1px solid #4b69f0;
 }
 
 .search-button {
   height: 73px;
   font-size: 16px;
   padding: 10px 20px;
-  background-color: #f0c14b;
+  background-color: #4b69f0;
   border: none;
   border-radius: 0 5px 5px 0;
   cursor: pointer;
@@ -32,11 +32,11 @@
 }
 
 .search-button:hover {
-  background-color: #d4a63f;
+  background-color: #4b69f0;
 }
 
 .search-button:active {
-  background-color: #b0882f;
+  background-color: #4b69f0;
   transform: translateY(1px);
 }
 
@@ -67,7 +67,7 @@
 }
 
 .card:hover {
-  box-shadow: 0 5px 10px #FF9900;
+  box-shadow: 0 5px 10px #4b69f0;
 }
 
 .card-image {
