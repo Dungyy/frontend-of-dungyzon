@@ -1,18 +1,36 @@
 import React, { useState } from "react";
-import "./App.css";
+// import "./App.css";
 import Axios from "axios";
 import { SpinnerDiamond } from "spinners-react";
+import {
+  Container,
+  Row,
+  Col,
+  Form,
+  FormGroup,
+  Label,
+  Input,
+  Button,
+  Card,
+  CardImg,
+  CardBody,
+  CardTitle,
+  CardSubtitle,
+} from "reactstrap";
+import "./App.css";
 
 function App() {
   const [data, setData] = useState("");
   const [searchResults, setSearchResults] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
-  // const [isNightMode, setIsNightMode] = useState(false);
+  const [isDarkMode, setIsDarkMode] = useState(false);
 
   const fetchData = async () => {
     try {
       setIsLoading(true);
-      const res = await Axios.get(`https://dungyzonapi.onrender.com/search/${data}`);
+      const res = await Axios.get(
+        `https://dungyzonapi.onrender.com/search/${data}`
+      );
       setSearchResults(res.data.results);
     } catch (error) {
       console.log(error);
@@ -26,58 +44,49 @@ function App() {
     fetchData();
   };
 
-  // const toggleNightMode = () => {
-  //   setIsNightMode(!isNightMode);
-  // };
+  const toggleDarkMode = () => {
+    setIsDarkMode(!isDarkMode);
+  };
 
   return (
-    <div className={"App"}>
-      <div
-        style={{
-          display: "flex",
-          justifyContent: "center",
-          alignItems: "center",
-        }}
-      >
-        <div style={{ alignItems: "center", fontSize: "large" }}>
-          <h1 style={{ fontSize: "60px" }}>DINGYZON</h1>
-          <br />
-          {/* <div className="toggle-container">
-            <label className="toggle-label">Night Mode</label>
-            <label className="switch">
-              <input type="checkbox" onChange={toggleNightMode} />
-              <span className="slider round"></span>
-            </label>
-          </div> */}
-        </div>
-      </div>
-      <div className="search-card">
-        <form onSubmit={handleSubmit}>
-          <input
-            style={{ maxWidth: "40rem" }}
-            className="search-input"
-            placeholder="Search.."
-            onChange={(event) => {
-              setData(event.target.value);
-            }}
-          />
-
-          <button className="search-button" type="submit">
-            Search
-          </button>
-        </form>
-      </div>
-      {isLoading ? (
-        <div
-          style={{
-            display: "flex",
-            justifyContent: "center",
-            alignItems: "center",
-            height: "100vh",
-            marginBottom: "20rem"
-          }}
-        >
-          <div style={{ alignItems: "center" }}>
+    <Container className={`App ${isDarkMode ? "dark-mode" : "light-mode"}`}>
+      <Row className="justify-content-center align-items-center">
+        <Col className="text-center">
+          <h1 className="display-2">DINGYZON</h1>
+        </Col>
+      </Row>
+      <Row className="justify-content-center">
+        <Col xs="auto">
+          <Form onSubmit={handleSubmit}>
+            <FormGroup>
+              <Label for="searchInput"></Label>
+              <Input
+                style={{ width: "500px" }}
+                type="text"
+                name="searchInput"
+                id="searchInput"
+                placeholder="Search.."
+                onChange={(event) => {
+                  setData(event.target.value);
+                }}
+              />
+            </FormGroup>
+            <Button color="primary" type="submit">
+              Search
+            </Button>
+          </Form>
+        </Col>
+      </Row>
+      <Row className="justify-content-center">
+        <Col xs="12">
+          <Button color="secondary" className="my-3" onClick={toggleDarkMode}>
+            {isDarkMode ? "Switch to Light Mode" : "Switch to Dark Mode"}
+          </Button>
+        </Col>
+      </Row>
+      <Row>
+        {isLoading ? (
+          <Col className="text-center my-5">
             <SpinnerDiamond
               size={200}
               thickness={199}
@@ -85,49 +94,47 @@ function App() {
               color="#4b69f0"
               secondaryColor="grey"
             />
-          </div>
-        </div>
-      ) : searchResults.length > 0 ? (
-        <div className="search-results">
-          {searchResults.map((result) => (
-            <div className="card" key={result.position}>
-              <div className="card-image">
-                <img src={result.image} alt={result.image} />
-              </div>
-              <div className="card-content">
-                <h2 className="card-title" style={{ fontSize: "23px" }}>
-                  {result.name}
-                </h2>
-                <p className="card-price">
-                  Price:{" "}
-                  <span style={{ color: "green" }}>{result.price_string} </span>
-                </p>
-                <p className="card-stars">Stars:{result.stars}</p>
-                <p className="card-reviews">
-                  Total Reviews: {result.total_reviews}
-                </p>
-                {result.has_prime && (
-                  <p style={{ color: "gold" }} className="card-prime">
-                    Prime available!
+          </Col>
+        ) : searchResults.length > 0 ? (
+          searchResults.map((result) => (
+            <Col
+              xs="12"
+              sm="6"
+              md="4"
+              lg="3"
+              className="my-3"
+              key={result.position}
+            >
+              <Card>
+                <CardImg top src={result.image} alt={result.image} />
+                <CardBody>
+                  <CardTitle tag="h2">{result.name}</CardTitle>
+                  <CardSubtitle tag="h5" className="mb-2 text-muted">
+                    Price:{" "}
+                    <span style={{ color: "green" }}>
+                      {result.price_string}
+                    </span>
+                  </CardSubtitle>
+                  <p className="card-stars">Stars:{result.stars}</p>
+                  <p className="card-reviews">
+                    Total Reviews: {result.total_reviews}
                   </p>
-                )}
-              </div>
-            </div>
-          ))}
-        </div>
-      ) : (
-        <div
-          style={{
-            display: "flex",
-            justifyContent: "center",
-            alignItems: "center",
-            marginTop: "5rem",
-          }}
-        >
-          <h2>A quick and easy search for any product :)</h2>
-        </div>
-      )}
-    </div>
+                  {result.has_prime && (
+                    <p style={{ color: "gold" }} className="card-prime">
+                      Prime available!
+                    </p>
+                  )}
+                </CardBody>
+              </Card>
+            </Col>
+          ))
+        ) : (
+          <Col className="text-center my-5">
+            <h2>A quick and easy search for any product :)</h2>
+          </Col>
+        )}
+      </Row>
+    </Container>
   );
 }
 
