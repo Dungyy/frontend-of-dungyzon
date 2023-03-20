@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import Axios from "axios";
 import { SpinnerDiamond } from "spinners-react";
-import { FaThumbsUp, FaThumbsDown } from 'react-icons/fa';
+import { FaThumbsUp, FaThumbsDown } from "react-icons/fa";
 import {
   Container,
   Row,
@@ -22,6 +22,7 @@ import {
   NavItem,
   NavLink,
 } from "reactstrap";
+
 import "./App.css";
 
 function App() {
@@ -55,24 +56,26 @@ function App() {
 
   return (
     <div className={`App ${isDarkMode ? "dark-mode" : "light-mode"}`}>
-      <div style={{fontSize:"25px"}}>
-      <Navbar
-        color=""
-        light={!isDarkMode}
-        dark={isDarkMode}
-        expand="md"
-        className="mb-5"
-        size="xl"
-      >
-        <NavbarBrand style={{fontSize:"25px"}} href="/">DINGYZON</NavbarBrand>
-        <Nav className="ml-auto togglebutton" navbar>
-          <NavItem>
-            <NavLink href="#" onClick={toggleDarkMode}>
-              {isDarkMode ? "💡 Light Mode" : "🌛 Dark Mode"}
-            </NavLink>
-          </NavItem>
-        </Nav>
-      </Navbar>
+      <div style={{ fontSize: "25px" }}>
+        <Navbar
+          color=""
+          light={!isDarkMode}
+          dark={isDarkMode}
+          expand="md"
+          className="mb-5"
+          size="xl"
+        >
+          <NavbarBrand style={{ fontSize: "25px" }} href="/">
+            DINGYZON
+          </NavbarBrand>
+          <Nav className="ml-auto togglebutton" navbar>
+            <NavItem>
+              <NavLink href="#" onClick={toggleDarkMode}>
+                {isDarkMode ? "💡 Light Mode" : "🌛 Dark Mode"}
+              </NavLink>
+            </NavItem>
+          </Nav>
+        </Navbar>
       </div>
       <Container>
         <Row className="justify-content-center align-items-center">
@@ -83,41 +86,37 @@ function App() {
         <br />
         <br />
         <Row className="justify-content-center">
-          <Col md="5">
+          <Col md="7">
             <Form onSubmit={handleSubmit}>
-              <FormGroup>
-                <Label for="searchInput">
-                  Dingyzon the fastest amazon product search engine AI ever
-                  created made by yours truly dungy😜
-                </Label>
-                <br />
-                <br />
-                <Input
-                  style={{ width: "100%", height: "100%" }}
-                  type="text"
-                  name="searchInput"
-                  id="searchInput"
-                  placeholder="Search..."
-                  onChange={(event) => {
-                    setData(event.target.value);
-                  }}
-                />
-              </FormGroup>
+              <div className="d-flex align-items-center">
+                <FormGroup className="mb-0 flex-grow-1">
+                  <Label for="searchInput">
+                    Dingyzon the fastest amazon product search engine AI ever
+                    created made by yours truly dungy😜
+                  </Label>
+                  <Input
+                    style={{ width: "100%", height: "100%" }}
+                    type="text"
+                    name="searchInput"
+                    id="searchInput"
+                    placeholder="Search..."
+                    onChange={(event) => {
+                      setData(event.target.value);
+                    }}
+                  />
+                </FormGroup>
+                <Button
+                  // style={{ width: "100%", height: "100%" }}
+                  style={{marginTop:"40px"}}
+                  color="primary"
+                >
+                  Search
+                </Button>
+              </div>
             </Form>
           </Col>
-          <Col md="2">
-                <br />
-            <FormGroup>
-              <Button
-                style={{ width: "100%", height: "100%", marginTop: "55px" }}
-                color="primary"
-                type="submit"
-              >
-                Search
-              </Button>
-            </FormGroup>{" "}
-          </Col>
         </Row>
+
         <Row>
           {isLoading ? (
             <Col className="text-center my-5">
@@ -182,7 +181,7 @@ function App() {
                         )}
                       </p>
                       <Button
-                      style={{marginLeft:"10px"}}
+                        style={{ marginLeft: "10px" }}
                         color="link"
                         onClick={() => {
                           window.open(result.url, "_blank");
@@ -203,12 +202,12 @@ function App() {
           ) : (
             <Col className="text-center my-5">
               {/* lol */}
-                <br />
-                <br />
-                <br />
-                <br />
-                <br />
-                <br />
+              <br />
+              <br />
+              <br />
+              <br />
+              <br />
+              <br />
 
               <h2>A quick and easy search for any product :)</h2>
             </Col>
