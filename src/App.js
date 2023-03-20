@@ -56,7 +56,7 @@ function App() {
 
   return (
     <div className={`App ${isDarkMode ? "dark-mode" : "light-mode"}`}>
-      <div style={{ fontSize: "25px" }}>
+      <div style={{ fontSize: "21px" }}>
         <Navbar
           color=""
           light={!isDarkMode}
@@ -65,7 +65,7 @@ function App() {
           className="mb-5"
           size="xl"
         >
-          <NavbarBrand style={{ fontSize: "25px" }} href="/">
+          <NavbarBrand style={{ fontSize: "21px" }} href="/">
             DINGYZON
           </NavbarBrand>
           <Nav className="ml-auto togglebutton" navbar>
@@ -95,6 +95,9 @@ function App() {
                       Dingyzon the fastest amazon product search engine AI ever
                       created made by yours truly dungy😜
                     </Label>
+                    <br />
+                    <br />
+                    <br />
                     <Input
                       style={{ width: "100%", height: "100%" }}
                       type="text"
@@ -107,12 +110,12 @@ function App() {
                     />
                   </FormGroup>
                 </Col>
-                <Col md="3" className="p-0">
-                  <Button
-                    style={{ width: "100%", height: "100%", marginTop:"40px" }}
-                    color="primary"
-                    type="submit"
-                  >
+                <Col md="3" className="p-">
+                  <br/>
+                  <br/>
+                  <br/>
+                  <br/>
+                  <Button color="primary" type="submit">
                     Search
                   </Button>
                 </Col>
