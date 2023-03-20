@@ -1,7 +1,7 @@
 import React, { useState } from "react";
-// import "./App.css";
 import Axios from "axios";
 import { SpinnerDiamond } from "spinners-react";
+import { FaThumbsUp, FaThumbsDown } from 'react-icons/fa';
 import {
   Container,
   Row,
@@ -16,6 +16,11 @@ import {
   CardBody,
   CardTitle,
   CardSubtitle,
+  Navbar,
+  NavbarBrand,
+  Nav,
+  NavItem,
+  NavLink,
 } from "reactstrap";
 import "./App.css";
 
@@ -49,92 +54,168 @@ function App() {
   };
 
   return (
-    <Container className={`App ${isDarkMode ? "dark-mode" : "light-mode"}`}>
-      <Row className="justify-content-center align-items-center">
-        <Col className="text-center">
-          <h1 className="display-2">DINGYZON</h1>
-        </Col>
-      </Row>
-      <Row className="justify-content-center">
-        <Col xs="auto">
-          <Form onSubmit={handleSubmit}>
+    <div className={`App ${isDarkMode ? "dark-mode" : "light-mode"}`}>
+      <div style={{fontSize:"25px"}}>
+      <Navbar
+        color=""
+        light={!isDarkMode}
+        dark={isDarkMode}
+        expand="md"
+        className="mb-5"
+        size="xl"
+      >
+        <NavbarBrand style={{fontSize:"25px"}} href="/">DINGYZON</NavbarBrand>
+        <Nav className="ml-auto togglebutton" navbar>
+          <NavItem>
+            <NavLink href="#" onClick={toggleDarkMode}>
+              {isDarkMode ? "💡 Light Mode" : "🌛 Dark Mode"}
+            </NavLink>
+          </NavItem>
+        </Nav>
+      </Navbar>
+      </div>
+      <Container>
+        <Row className="justify-content-center align-items-center">
+          <Col className="text-center">
+            <h1 className="display-2">DINGYZON</h1>
+          </Col>
+        </Row>
+        <br />
+        <br />
+        <Row className="justify-content-center">
+          <Col md="5">
+            <Form onSubmit={handleSubmit}>
+              <FormGroup>
+                <Label for="searchInput">
+                  Dingyzon the fastest amazon product search engine AI ever
+                  created made by yours truly dungy😜
+                </Label>
+                <br />
+                <br />
+                <Input
+                  style={{ width: "100%", height: "100%" }}
+                  type="text"
+                  name="searchInput"
+                  id="searchInput"
+                  placeholder="Search..."
+                  onChange={(event) => {
+                    setData(event.target.value);
+                  }}
+                />
+              </FormGroup>
+            </Form>
+          </Col>
+          <Col md="2">
+                <br />
             <FormGroup>
-              <Label for="searchInput"></Label>
-              <Input
-                style={{ width: "500px" }}
-                type="text"
-                name="searchInput"
-                id="searchInput"
-                placeholder="Search.."
-                onChange={(event) => {
-                  setData(event.target.value);
-                }}
+              <Button
+                style={{ width: "100%", height: "100%", marginTop: "55px" }}
+                color="primary"
+                type="submit"
+              >
+                Search
+              </Button>
+            </FormGroup>{" "}
+          </Col>
+        </Row>
+        <Row>
+          {isLoading ? (
+            <Col className="text-center my-5">
+              <SpinnerDiamond
+                size={200}
+                thickness={199}
+                speed={98}
+                color="#4b69f0"
+                secondaryColor="grey"
               />
-            </FormGroup>
-            <Button color="primary" type="submit">
-              Search
-            </Button>
-          </Form>
-        </Col>
-      </Row>
-      <Row className="justify-content-center">
-        <Col xs="12">
-          <Button color="secondary" className="my-3" onClick={toggleDarkMode}>
-            {isDarkMode ? "Switch to Light Mode" : "Switch to Dark Mode"}
-          </Button>
-        </Col>
-      </Row>
-      <Row>
-        {isLoading ? (
-          <Col className="text-center my-5">
-            <SpinnerDiamond
-              size={200}
-              thickness={199}
-              speed={98}
-              color="#4b69f0"
-              secondaryColor="grey"
-            />
-          </Col>
-        ) : searchResults.length > 0 ? (
-          searchResults.map((result) => (
-            <Col
-              xs="12"
-              sm="6"
-              md="4"
-              lg="3"
-              className="my-3"
-              key={result.position}
-            >
-              <Card>
-                <CardImg top src={result.image} alt={result.image} />
-                <CardBody>
-                  <CardTitle tag="h2">{result.name}</CardTitle>
-                  <CardSubtitle tag="h5" className="mb-2 text-muted">
-                    Price:{" "}
-                    <span style={{ color: "green" }}>
-                      {result.price_string}
-                    </span>
-                  </CardSubtitle>
-                  <p className="card-stars">Stars:{result.stars}</p>
-                  <p className="card-reviews">
-                    Total Reviews: {result.total_reviews}
-                  </p>
-                  {result.has_prime && (
-                    <p style={{ color: "gold" }} className="card-prime">
-                      Prime available!
-                    </p>
-                  )}
-                </CardBody>
-              </Card>
             </Col>
-          ))
-        ) : (
-          <Col className="text-center my-5">
-            <h2>A quick and easy search for any product :)</h2>
-          </Col>
-        )}
-      </Row>
-    </Container>
+          ) : searchResults.length > 0 ? (
+            <div className="cards-container">
+              {searchResults.map((result) => (
+                <div className="card-column" key={result.position}>
+                  <Card className="card">
+                    <CardImg
+                      top
+                      src={result.image}
+                      alt={result.image}
+                      className="card-img-top"
+                    />
+                    <CardBody>
+                      <CardTitle tag="h2">{result.name}</CardTitle>
+                      <br />
+                      <CardSubtitle tag="h5" className="mb-2 text-muted">
+                        Price:
+                        <span style={{ color: "green" }}>
+                          {result.price_string}
+                        </span>
+                      </CardSubtitle>
+                      {result.stars && (
+                        <>
+                          <p className="card-stars">
+                            Stars: {result.stars}{" "}
+                            {"⭐️".repeat(Math.floor(result.stars))}
+                          </p>
+                        </>
+                      )}
+                      <p className="card-reviews">
+                        Total Reviews: {result.total_reviews}
+                        <br />
+                        Best Seller:{" "}
+                        {result.is_best_seller ? (
+                          <FaThumbsUp />
+                        ) : (
+                          <FaThumbsDown />
+                        )}
+                        <br />
+                        Amazon Choice:{" "}
+                        {result.is_amazon_choice ? (
+                          <FaThumbsUp />
+                        ) : (
+                          <FaThumbsDown />
+                        )}
+                        <br />
+                        Limited Deal:{" "}
+                        {result.is_limited_deal ? (
+                          <FaThumbsUp />
+                        ) : (
+                          <FaThumbsDown />
+                        )}
+                      </p>
+                      <Button
+                      style={{marginLeft:"10px"}}
+                        color="link"
+                        onClick={() => {
+                          window.open(result.url, "_blank");
+                        }}
+                      >
+                        View on Amazon
+                      </Button>
+                      {result.has_prime && (
+                        <p style={{ color: "gold" }} className="card-prime">
+                          Prime available!
+                        </p>
+                      )}
+                    </CardBody>
+                  </Card>
+                </div>
+              ))}
+            </div>
+          ) : (
+            <Col className="text-center my-5">
+              {/* lol */}
+                <br />
+                <br />
+                <br />
+                <br />
+                <br />
+                <br />
+
+              <h2>A quick and easy search for any product :)</h2>
+            </Col>
+          )}
+        </Row>
+      </Container>
+    </div>
   );
 }
 
