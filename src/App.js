@@ -89,29 +89,33 @@ function App() {
           <Col md="7">
             <Form onSubmit={handleSubmit}>
               <div className="d-flex align-items-center">
-                <FormGroup className="mb-0 flex-grow-1">
-                  <Label for="searchInput">
-                    Dingyzon the fastest amazon product search engine AI ever
-                    created made by yours truly dungy😜
-                  </Label>
-                  <Input
-                    style={{ width: "100%", height: "100%" }}
-                    type="text"
-                    name="searchInput"
-                    id="searchInput"
-                    placeholder="Search..."
-                    onChange={(event) => {
-                      setData(event.target.value);
-                    }}
-                  />
-                </FormGroup>
-                <Button
-                  // style={{ width: "100%", height: "100%" }}
-                  style={{marginTop:"40px"}}
-                  color="primary"
-                >
-                  Search
-                </Button>
+                <Col md="9" className="p-0">
+                  <FormGroup className="mb-0 flex-grow-1">
+                    <Label for="searchInput">
+                      Dingyzon the fastest amazon product search engine AI ever
+                      created made by yours truly dungy😜
+                    </Label>
+                    <Input
+                      style={{ width: "100%", height: "100%" }}
+                      type="text"
+                      name="searchInput"
+                      id="searchInput"
+                      placeholder="Search..."
+                      onChange={(event) => {
+                        setData(event.target.value);
+                      }}
+                    />
+                  </FormGroup>
+                </Col>
+                <Col md="3" className="p-0">
+                  <Button
+                    style={{ width: "100%", height: "100%", marginTop:"40px" }}
+                    color="primary"
+                    type="submit"
+                  >
+                    Search
+                  </Button>
+                </Col>
               </div>
             </Form>
           </Col>
