@@ -80,3 +80,25 @@
 .card:hover::before {
   opacity: 1;
 } */
+
+
+.dark-mode .page-link {
+  color: #fff;
+  background-color: #222;
+  border-color: #222;
+}
+
+.dark-mode .page-link:hover {
+  color: #fff;
+  background-color: #444;
+  border-color: #444;
+}
+
+.dark-mode .page-item.active .page-link {
+  background-color: #444;
+  border-color: #444;
+}
+
+.dark-mode .page-item .page-link {
+  color: rgba(28, 15, 207, 0.808);
+}

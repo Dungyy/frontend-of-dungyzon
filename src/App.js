@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import Axios from "axios";
 import { SpinnerDiamond } from "spinners-react";
-import { FaThumbsUp, FaThumbsDown } from "react-icons/fa";
+import { FaThumbsUp } from "react-icons/fa";
 import {
   Container,
   Row,
@@ -73,6 +73,7 @@ function App() {
           expand="md"
           className="mb-5"
           size="xl"
+          fixed="top"
         >
           <NavbarBrand style={{ fontSize: "21px" }} href="/">
             DINGYZON
@@ -89,6 +90,7 @@ function App() {
       <Container>
         <Row className="justify-content-center align-items-center">
           <Col className="text-center">
+            <br />
             <h1 className="display-2">DINGYZON</h1>
           </Col>
         </Row>
@@ -168,67 +170,72 @@ function App() {
                         <>
                           <p className="card-stars">
                             Stars: {result.stars}{" "}
-                            {"⭐️".repeat(Math.floor(result.stars))}
+                            {result.stars > 4.5
+                              ? "⭐️⭐️⭐️⭐️⭐️"
+                              : "⭐️".repeat(Math.floor(result.stars))}
                           </p>
                         </>
+                      )}
+
+                      {result.has_prime && (
+                        <p style={{ color: "gold" }} className="card-prime">
+                          Prime available!
+                        </p>
                       )}
                       <p className="card-reviews">
                         Total Reviews: {result.total_reviews}
                         <br />
-                        Best Seller:{" "}
-                        {result.is_best_seller ? (
-                          <FaThumbsUp />
-                        ) : (
-                          <FaThumbsDown />
+                        {result.is_best_seller && (
+                          <>
+                            Best Seller: <FaThumbsUp />
+                            <br />
+                          </>
                         )}
-                        <br />
-                        Amazon Choice:{" "}
-                        {result.is_amazon_choice ? (
-                          <FaThumbsUp />
-                        ) : (
-                          <FaThumbsDown />
+                        {result.is_amazon_choice && (
+                          <>
+                            Amazon Choice: <FaThumbsUp />
+                            <br />
+                          </>
                         )}
-                        <br />
-                        Limited Deal:{" "}
-                        {result.is_limited_deal ? (
-                          <FaThumbsUp />
-                        ) : (
-                          <FaThumbsDown />
+                        {result.is_limited_deal && (
+                          <>
+                            Limited Deal: <FaThumbsUp />
+                            <br />
+                          </>
                         )}
                       </p>
+
                       <Button
-                        style={{ marginLeft: "10px" }}
-                        color="link"
+                        className={isDarkMode ? "dark-mode" : ""}
+                        color=""
                         onClick={() => {
                           window.open(result.url, "_blank");
                         }}
                       >
                         View on Amazon
                       </Button>
-                      {result.has_prime && (
-                        <p style={{ color: "gold" }} className="card-prime">
-                          Prime available!
-                        </p>
-                      )}
                     </CardBody>
                   </Card>
                 </div>
               ))}
               <Row>
                 <Col className="text-center my-5 d-flex">
-                  <Pagination size="lg">
+                  <Pagination
+                    size="lg"
+                    className={isDarkMode ? "dark-mode" : ""}
+                  >
                     {/* <PaginationItem disabled={currentPage === 1}>
                       <PaginationLink
                         first
                         onClick={() => handlePageChange(1)}
                       />
                     </PaginationItem> */}
-                    <PaginationItem disabled={currentPage === 1}>
+                    {/* <PaginationItem disabled={currentPage === 1}>
                       <PaginationLink
                         previous
                         onClick={() => handlePageChange(currentPage - 1)}
                       />
-                    </PaginationItem>
+                    </PaginationItem> */}
                     {/* Add dynamic PaginationItems based on the number of pages */}
                     {[...Array(15)].map((_, index) => {
                       const page = index + 1;
@@ -242,12 +249,12 @@ function App() {
                         </PaginationItem>
                       );
                     })}
-                    <PaginationItem>
+                    {/* <PaginationItem>
                       <PaginationLink
                         next
                         onClick={() => handlePageChange(currentPage + 1)}
                       />
-                    </PaginationItem>
+                    </PaginationItem> */}
                     {/* <PaginationItem>
                       <PaginationLink
                         last
