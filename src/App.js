@@ -21,6 +21,9 @@ import {
   Nav,
   NavItem,
   NavLink,
+  Pagination,
+  PaginationItem,
+  PaginationLink,
 } from "reactstrap";
 
 import "./App.css";
@@ -30,12 +33,13 @@ function App() {
   const [searchResults, setSearchResults] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
   const [isDarkMode, setIsDarkMode] = useState(false);
+  const [currentPage, setCurrentPage] = useState(1);
 
-  const fetchData = async () => {
+  const fetchData = async (page) => {
     try {
       setIsLoading(true);
       const res = await Axios.get(
-        `https://dungyzonapi.onrender.com/search/${data}`
+        `https://dungyzonapi.onrender.com/search/${data}?page=${page}`
       );
       setSearchResults(res.data.results);
     } catch (error) {
@@ -47,7 +51,12 @@ function App() {
 
   const handleSubmit = (event) => {
     event.preventDefault();
-    fetchData();
+    fetchData(currentPage);
+  };
+
+  const handlePageChange = (page) => {
+    setCurrentPage(page);
+    fetchData(page);
   };
 
   const toggleDarkMode = () => {
@@ -111,10 +120,10 @@ function App() {
                   </FormGroup>
                 </Col>
                 <Col md="3" className="p-">
-                  <br/>
-                  <br/>
-                  <br/>
-                  <br/>
+                  <br />
+                  <br />
+                  <br />
+                  <br />
                   <Button color="primary" type="submit">
                     Search
                   </Button>
@@ -205,6 +214,49 @@ function App() {
                   </Card>
                 </div>
               ))}
+              <Row>
+                <Col className="text-center my-5 d-flex">
+                  <Pagination size="lg">
+                    {/* <PaginationItem disabled={currentPage === 1}>
+                      <PaginationLink
+                        first
+                        onClick={() => handlePageChange(1)}
+                      />
+                    </PaginationItem> */}
+                    <PaginationItem disabled={currentPage === 1}>
+                      <PaginationLink
+                        previous
+                        onClick={() => handlePageChange(currentPage - 1)}
+                      />
+                    </PaginationItem>
+                    {/* Add dynamic PaginationItems based on the number of pages */}
+                    {[...Array(15)].map((_, index) => {
+                      const page = index + 1;
+                      return (
+                        <PaginationItem
+                          key={page}
+                          active={currentPage === page}
+                          onClick={() => handlePageChange(page)}
+                        >
+                          <PaginationLink>{page}</PaginationLink>
+                        </PaginationItem>
+                      );
+                    })}
+                    <PaginationItem>
+                      <PaginationLink
+                        next
+                        onClick={() => handlePageChange(currentPage + 1)}
+                      />
+                    </PaginationItem>
+                    {/* <PaginationItem>
+                      <PaginationLink
+                        last
+                        onClick={() => handlePageChange(5)}
+                      />
+                    </PaginationItem> */}
+                  </Pagination>
+                </Col>
+              </Row>
             </div>
           ) : (
             <Col className="text-center my-5">
