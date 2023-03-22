@@ -84,15 +84,22 @@ function App() {
                 {isDarkMode ? "💡 Light Mode" : "🌛 Dark Mode"}
               </NavLink>
             </NavItem>
+
           </Nav>
+
         </Navbar>
+        <hr  style={{width: "100vw", borderTop: "5px solid black", marginTop:"55px"}}/>
+        
       </div>
       <Container>
+
         <Row className="justify-content-center align-items-center">
           <Col className="text-center">
-            <br />
+            <br /><br/>
+            <br /><br/>
             <h1 className="display-2">DINGYZON</h1>
           </Col>
+
         </Row>
         <br />
         <br />
