@@ -32,7 +32,7 @@ function App() {
   const [data, setData] = useState("");
   const [searchResults, setSearchResults] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
-  const [isDarkMode, setIsDarkMode] = useState(false);
+  const [isDarkMode, setIsDarkMode] = useState(true);
   const [currentPage, setCurrentPage] = useState(1);
 
   const fetchData = async (page) => {
