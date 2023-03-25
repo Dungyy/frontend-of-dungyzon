@@ -65,39 +65,37 @@ function App() {
 
   return (
     <div className={`App ${isDarkMode ? "dark-mode" : "light-mode"}`}>
-      <div style={{ fontSize: "21px" }}>
-        <Navbar
-          color=""
-          light={!isDarkMode}
-          dark={isDarkMode}
-          expand="md"
-          className="mb-5"
-          size="xl"
-          fixed="top"
-        >
-          <NavbarBrand style={{ fontSize: "21px" }} href="/">
-            DINGYZON
-          </NavbarBrand>
-          <Nav className="ml-auto togglebutton" navbar>
-            <NavItem>
-              <NavLink href="#" onClick={toggleDarkMode}>
-                {isDarkMode ? "💡 Light Mode" : "🌛 Dark Mode"}
-              </NavLink>
-            </NavItem>
+     <div style={{ fontSize: "21px", paddingTop: "46px"}}>
+  <Navbar
+    color=""
+    light={!isDarkMode}
+    dark={isDarkMode}
+    expand="md"
+    className="mb-5"
+    size="xl"
+    fixed="top"
+  >
+    <NavbarBrand style={{ fontSize: "21px" }} href="/">
+      DUNGYZON
+    </NavbarBrand>
+    <Nav className="ml-auto togglebutton" navbar>
+      <NavItem>
+        <NavLink href="#" onClick={toggleDarkMode}>
+          {isDarkMode ? "💡 Light Mode" : "🌛 Dark Mode"}
+        </NavLink>
+      </NavItem>
+    </Nav>
+  </Navbar>
+  
+</div>
 
-          </Nav>
-
-        </Navbar>
-        <hr  style={{width: "100vw", borderTop: "5px solid black", marginTop:"55px"}}/>
-        
-      </div>
       <Container>
 
         <Row className="justify-content-center align-items-center">
           <Col className="text-center">
-            <br /><br/>
-            <br /><br/>
-            <h1 className="display-2">DINGYZON</h1>
+            <br /><br/><br />
+            
+            <h1 className="display-2">DUNGYZON</h1>
           </Col>
 
         </Row>
@@ -110,7 +108,7 @@ function App() {
                 <Col md="9" className="p-0">
                   <FormGroup className="mb-0 flex-grow-1">
                     <Label for="searchInput">
-                      Dingyzon the fastest amazon product search engine AI ever
+                      Dungyzon the fastest amazon product search engine AI ever
                       created made by yours truly dungy😜
                     </Label>
                     <br />
