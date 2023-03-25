@@ -1,70 +1,50 @@
-# Getting Started with Create React App
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+# Dingyzon
 
-## Available Scripts
+![image](https://user-images.githubusercontent.com/88725477/226798980-c50c88d5-2234-4e9d-902c-be9ec156688b.png)
 
-In the project directory, you can run:
 
-### `npm start`
+## [Live Site](https://dungyzon.netlify.app/)
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+## Table of Contents
++ [About](#about)
++ [Getting Started](#getting_started)
++ [Usage](#usage)
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+## About <a name = "about"></a>
+Welcome! This project is an Amazon clone created with ReactJS and custom CSS for the frontend, while using Node.js and Express.js for the backend API. The frontend features a search bar that enables users to search for products and showcases product details such as images, ratings, and prices within card components. The backend API manages search requests, delivering relevant product data to the frontend. This project emulates some of Amazon's core features and offers a chance to develop a full-stack application using widely-used web development technologies.
 
-### `npm test`
+## Getting Started <a name = "getting_started"></a>
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+### Installing
 
-### `npm run build`
+Open your preferred terminal and clone the repository:
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+```
+git clone https://github.com/Dungyy/frontend-of-dungyzon.git
+```
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+Once the GitHub repo is cloned, change the directory into frontend-of-dungyzon and run the following command:
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+```
+npm install i
+```
 
-### `npm run eject`
+After all packages have been downloaded, proceed with the final steps below.
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+## Usage <a name = "usage"></a>
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+In your terminal, execute the command:
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+```
+npm start
+```
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+Go to 
+```
+http://localhost:3000
+```
+You should be viewing Dingyzon!
 
-## Learn More
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+## Thank You!
