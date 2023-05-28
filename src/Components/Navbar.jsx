@@ -11,12 +11,13 @@ import {
   NavLink,
   NavbarBrand,
 } from "reactstrap";
+import "../App.css";
 
 const NavbarComponent = ({ isDarkMode, toggleDarkMode }) => {
   const [modal, setModal] = useState(false);
 
   const toggleModal = () => setModal(!modal);
-
+  const contentClass = !isDarkMode ? "dark-mode" : "light-mode";
   return (
     <div>
       <Navbar
@@ -51,18 +52,27 @@ const NavbarComponent = ({ isDarkMode, toggleDarkMode }) => {
         </Nav>
       </Navbar>
 
-      <Modal isOpen={modal} toggle={toggleModal} className={!isDarkMode}>
-        <ModalHeader toggle={toggleModal}>What is Dungyzon?</ModalHeader>
-        <ModalBody className={!isDarkMode}>
-          Dungyzon is your speedy, reliable buddy for Amazon product searches.
-          It uses smart web scraping tech to fetch info from all over the
-          internet, delivering you precise product details in no time at all.
-          With Dungyzon, you get quick, accurate results in a user-friendly
-          format. Think of it as your hassle-free, shortcut route to the Amazon
-          products you need. Less time searching, more time shopping!
+      <Modal
+        isOpen={modal}
+        toggle={toggleModal}
+        contentClassName={contentClass}
+      >
+        <ModalHeader tag={"h3"} toggle={toggleModal}>
+          What is Dungyzon?
+        </ModalHeader>
+        <ModalBody tag={"h4"}>
+          Dungyzon is your reliable buddy for Amazon product searches. It uses
+          smart web scraping tech to fetch info from all over the internet,
+          delivering you product details in decent time. With Dungyzon, you get
+          quick, accurate results in a user-friendly format. Think of it as your
+          hassle-free, shortcut route to the Amazon products you need. Less time
+          searching, more time shopping!
         </ModalBody>
         <ModalFooter>
-          <Button color="secondary" onClick={toggleModal}>
+          <Button
+            color={!isDarkMode ? "outline-dark" : "outline-dark"}
+            onClick={toggleModal}
+          >
             Close
           </Button>
         </ModalFooter>

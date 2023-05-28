@@ -100,8 +100,18 @@
   color: rgba(15, 207, 197, 0.808);
 }
 
+.modal.dark-mode .modal-content {
+  background-color: #343a40 !important;
+  color: #f8f9fa !important;
+}
+
+.modal.light-mode .modal-content {
+  background-color: #f8f9fa !important;
+  color: #212529 !important;
+}
+
 .fixed-footer {
-  /* position: fixed; */
+  position: fixed;
   bottom: 0;
   width: 100%;
   text-align: center;
