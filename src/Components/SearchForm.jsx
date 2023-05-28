@@ -24,7 +24,7 @@ const SearchForm = ({ handleSubmit, setData }) => (
       <Col md="3" className="p-1 mt-2">
         <br />
         <br />
-        <Button color="primary" type="submit">
+        <Button color="secondary" type="submit">
           Search
         </Button>
       </Col>

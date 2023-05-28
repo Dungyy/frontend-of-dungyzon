@@ -7,6 +7,7 @@ import NavbarComponent from "./Components/Navbar";
 import SearchForm from "./Components/SearchForm";
 import PaginationComponent from "./Components/Pagination";
 import ProductCard from "./Components/Card";
+import Footer from "./Components/Footer";
 
 import "./App.css";
 
@@ -17,7 +18,6 @@ function App() {
   const [isDarkMode, setIsDarkMode] = useState(true);
   const [currentPage, setCurrentPage] = useState(1);
   const [error, setError] = useState(null);
-
 
   const fetchData = async () => {
     try {
@@ -33,7 +33,6 @@ function App() {
       setIsLoading(false);
     }
   };
-  
 
   const handleSubmit = (event) => {
     event.preventDefault();
@@ -62,7 +61,7 @@ function App() {
       <Container>
         <Row className="justify-content-center align-items-center">
           <Col className="text-center">
-            <h1 className="display-2">DUNGYZON</h1>
+            <h1 className="display-4 ">DUNGYZON</h1>
           </Col>
         </Row>
         <Row className="justify-content-center">
@@ -102,11 +101,19 @@ function App() {
             </div>
           ) : (
             <Col className="text-center my-5">
+              <br />
+              <br />
+              <br />
+              <br />
+              <br />
+              <br />
+              <br />
               <h2>Search for your favorite Amazon product! :)</h2>
             </Col>
           )}
         </Row>
       </Container>
+      <Footer />
     </div>
   );
 }

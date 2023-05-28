@@ -19,7 +19,7 @@ const ProductCard = ({ result, isDarkMode }) => (
         className="card-img-top"
       />
       <CardBody>
-        <CardTitle tag="h2">{result.name}</CardTitle>
+        <CardTitle tag="h3">{result.name}</CardTitle>
         <br />
         <CardSubtitle tag="h5" className="mb-2 text-muted">
           Price:
@@ -67,7 +67,7 @@ const ProductCard = ({ result, isDarkMode }) => (
 
         <Button
           className={isDarkMode ? "dark-mode" : ""}
-          color=""
+          color={isDarkMode ? "outline-light" : "outline-dark"}
           onClick={() => {
             window.open(result.url, "_blank");
           }}
