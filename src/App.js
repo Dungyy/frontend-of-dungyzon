@@ -1,47 +1,31 @@
-import React, { useState } from "react";
-import Axios from "axios";
-import { SpinnerDiamond } from "spinners-react";
-import { Container, Row, Col } from "reactstrap";
-
-import NavbarComponent from "./Components/Navbar";
-import SearchForm from "./Components/SearchForm";
-import PaginationComponent from "./Components/Pagination";
-import ProductCard from "./Components/Card";
-import Footer from "./Components/Footer";
-
-import "./App.css";
+// App.js
+import React, { useState } from 'react';
+import { SpinnerDiamond } from 'spinners-react';
+import { Container, Row, Col } from 'reactstrap';
+import NavbarComponent from './Components/Navbar';
+import SearchForm from './Components/SearchForm';
+import PaginationComponent from './Components/Pagination';
+import ProductCard from './Components/Card';
+import Footer from './Components/Footer';
+import './App.css';
+import { useSearchData } from './hooks/fetch';
 
 function App() {
-  const [data, setData] = useState("");
-  const [searchResults, setSearchResults] = useState([]);
-  const [isLoading, setIsLoading] = useState(false);
   const [isDarkMode, setIsDarkMode] = useState(true);
-  const [currentPage, setCurrentPage] = useState(1);
-  const [error, setError] = useState(null);
-
-  const fetchData = async () => {
-    try {
-      setIsLoading(true);
-      const res = await Axios.get(
-        `${process.env.REACT_APP_API_BASE_URL}/search/${data}?page=${currentPage}`
-      );
-      setSearchResults(res.data.results);
-      setError(null);
-    } catch (error) {
-      setError(error.message);
-    } finally {
-      setIsLoading(false);
-    }
-  };
+  const { searchResults, isLoading, currentPage, setCurrentPage, error, setQuery } = useSearchData(
+    '',
+    1
+  );
 
   const handleSubmit = (event) => {
     event.preventDefault();
-    fetchData();
+    const formData = new FormData(event.target);
+    const searchData = formData.get('searchInput');
+    setQuery(searchData);
   };
 
   const handlePageChange = (page) => {
     setCurrentPage(page);
-    fetchData();
   };
 
   const toggleDarkMode = () => {
@@ -49,29 +33,23 @@ function App() {
   };
 
   return (
-    <div className={`App ${isDarkMode ? "dark-mode" : "light-mode"}`}>
-      <NavbarComponent
-        isDarkMode={isDarkMode}
-        toggleDarkMode={toggleDarkMode}
-      />
-      <br />
-      <br />
-      <br />
-      <br />
+    <div className={`App ${isDarkMode ? 'dark-mode' : 'light-mode'}`}>
+      <NavbarComponent isDarkMode={isDarkMode} toggleDarkMode={toggleDarkMode} />
       <Container>
-        <Row className="justify-content-center align-items-center">
-          <Col className="text-center">
-            <h1 className="display-4 ">DUNGYZON</h1>
-          </Col>
-        </Row>
-        <Row className="justify-content-center">
-          <Col md="7">
-            <SearchForm handleSubmit={handleSubmit} setData={setData} />
+        <Row className="d-flex flex-column align-items-center">
+          <Col md="7" className="text-center">
+            <br />
+            <br />
+            <br />
+            <br />
+            <br />
+            <h3 className="my-2">Search for your favorite Amazon product! :)</h3>
+            <SearchForm handleSubmit={handleSubmit} className="search-form" />
           </Col>
         </Row>
         <Row>
-          {isLoading ? (
-            <Col className="text-center my-5">
+          <Col className="text-center my-5">
+            {isLoading ? (
               <SpinnerDiamond
                 size={200}
                 thickness={199}
@@ -79,38 +57,21 @@ function App() {
                 color="#4b69f0"
                 secondaryColor="grey"
               />
-            </Col>
-          ) : error ? (
-            <Col className="text-center my-5">
-              <p>Error: {error}</p>
-            </Col>
-          ) : searchResults.length > 0 ? (
-            <div className="cards-container">
-              {searchResults.map((result) => (
-                <ProductCard
-                  key={result.position}
-                  result={result}
+            ) : error ? (
+              <p>Please try at a later time</p>
+            ) : searchResults.length > 0 ? (
+              <div className="cards-container">
+                {searchResults.map((result) => (
+                  <ProductCard key={result.position} result={result} isDarkMode={isDarkMode} />
+                ))}
+                <PaginationComponent
+                  currentPage={currentPage}
+                  handlePageChange={handlePageChange}
                   isDarkMode={isDarkMode}
                 />
-              ))}
-              <PaginationComponent
-                currentPage={currentPage}
-                handlePageChange={handlePageChange}
-                isDarkMode={isDarkMode}
-              />
-            </div>
-          ) : (
-            <Col className="text-center my-5">
-              <br />
-              <br />
-              <br />
-              <br />
-              <br />
-              <br />
-              <br />
-              <h2>Search for your favorite Amazon product! :)</h2>
-            </Col>
-          )}
+              </div>
+            ) : null}
+          </Col>
         </Row>
       </Container>
       <Footer />

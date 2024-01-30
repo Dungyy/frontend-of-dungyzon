@@ -1,17 +1,12 @@
-import React from "react";
+import React from 'react';
+import '../App.css';
 
-import "../App.css";
+const Footer = () => {
+  return (
+    <footer className="fixed-footer">
+      <p>Copyright &copy; {new Date().getFullYear()} Dungyzon</p>
+    </footer>
+  );
+};
 
-export default function Footer() {
-    const getCurrentYear = () => {
-      return new Date().getFullYear();
-    };
-  
-    return (
-      <div className="d-flex align-items-center fixed-footer">
-          <p className="mb-0 flex-grow-1">
-          Copyright © {getCurrentYear()} Dungy
-          </p>
-      </div>
-    );
-  }
+export default Footer;

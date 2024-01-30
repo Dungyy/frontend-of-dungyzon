@@ -1,16 +1,10 @@
-import React from "react";
-import {
-  Col,
-  Row,
-  Pagination,
-  PaginationItem,
-  PaginationLink,
-} from "reactstrap";
+import React from 'react';
+import { Col, Row, Pagination, PaginationItem, PaginationLink } from 'reactstrap';
 
 const PaginationComponent = ({ currentPage, handlePageChange, isDarkMode }) => (
   <Row>
     <Col className="text-center my-5 d-flex">
-      <Pagination size="lg" className={isDarkMode ? "dark-mode" : ""}>
+      <Pagination size="lg" className={isDarkMode ? 'dark-mode' : ''}>
         {[...Array(15)].map((_, index) => {
           const page = index + 1;
           return (

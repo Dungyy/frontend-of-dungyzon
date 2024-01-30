@@ -1,6 +1,9 @@
 .App {
   transition: background-color 0.3s ease;
-  font-family: system-ui, -apple-system, Roboto;
+  font-family:
+    system-ui,
+    -apple-system,
+    Roboto;
   min-height: 100vh;
   min-width: 100vw;
 }
@@ -115,4 +118,63 @@
   bottom: 0;
   width: 100%;
   text-align: center;
+}
+
+
+/* // customs  */
+
+.search-form {
+  display: flex;
+  justify-content: center;
+  margin-top: 20px;
+}
+
+.search-form input[type="text"] {
+  width: 70%;
+  padding: 10px;
+  border-radius: 5px;
+  border: 1px solid #ccc;
+  margin-right: 10px;
+}
+
+.search-form button {
+  padding: 10px 20px;
+  border-radius: 5px;
+  background-color: #4b69f0;
+  color: white;
+  border: none;
+  cursor: pointer;
+}
+
+.search-form button:hover {
+  background-color: #3658d4;
+}
+
+@media (max-width: 768px) {
+  .search-form input[type="text"] {
+    width: 60%;
+  }
+}
+
+.dark-mode .modal-content {
+  background-color: #343a40; /* Dark background */
+  color: #f8f9fa; /* Light text */
+}
+
+.dark-mode .modal-header,
+.dark-mode .modal-body,
+.dark-mode .modal-footer {
+  border-color: #495057; /* Dark border for modal sections */
+}
+
+.dark-mode .modal-header .close {
+  color: #f8f9fa; /* Light color for close button */
+}
+
+
+
+/* search button  */
+
+.custom-wide-btn {
+  width: 200px; /* or any other width */
 }

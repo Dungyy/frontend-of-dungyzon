@@ -1,5 +1,5 @@
-import React from "react";
-import { Col, Form, FormGroup, Input, Button } from "reactstrap";
+import React from 'react';
+import { Col, Form, FormGroup, Input, Button } from 'reactstrap';
 
 const SearchForm = ({ handleSubmit, setData }) => (
   <Form onSubmit={handleSubmit}>
@@ -20,10 +20,10 @@ const SearchForm = ({ handleSubmit, setData }) => (
           />
         </FormGroup>
       </Col>
-      <Col md="3" className="p-1 mt-2">
+      <Col md="1" className="p-1 mt-2">
         <br />
         <br />
-        <Button color="secondary" type="submit">
+        <Button type="submit" className="btn-lg btn-outline-primary custom-wide-btn">
           Search
         </Button>
       </Col>
