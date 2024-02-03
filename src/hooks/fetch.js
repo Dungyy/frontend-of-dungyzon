@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react';
 import Axios from 'axios';
-import { URL } from '../global'; // Adjust the import path as needed
+import { URL } from '../global';
 
 export const useSearchData = (initialQuery, initialPage) => {
   const [query, setQuery] = useState(initialQuery);

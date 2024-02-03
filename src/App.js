@@ -37,7 +37,7 @@ function App() {
       <NavbarComponent isDarkMode={isDarkMode} toggleDarkMode={toggleDarkMode} />
       <Container>
         <Row className="d-flex flex-column align-items-center">
-          <Col md="7" className="text-center">
+          <Col md="5" className="text-center">
             <br />
             <br />
             <br />

@@ -1,17 +1,26 @@
 {
-    "parser": "@babel/eslint-parser",
-    "parserOptions": {
-      "ecmaVersion": 2020,
-      "sourceType": "module"
+  "parser": "@babel/eslint-parser",
+  "parserOptions": {
+    "ecmaVersion": 2020,
+    "sourceType": "module",
+    "ecmaFeatures": {
+      "jsx": true
     },
-    "env": {
-      "es6": true,
-      "node": true
-    },
-    "extends": ["eslint:recommended", "plugin:prettier/recommended"],
-    "plugins": ["prettier"],
-    "rules": {
-      "prettier/prettier": "error"
+    "requireConfigFile": false
+  },
+  "env": {
+    "es6": true,
+    "node": true
+  },
+  "plugins": ["prettier", "react"],
+  "extends": ["eslint:recommended", "plugin:react/recommended", "plugin:prettier/recommended"],
+  "rules": {
+    "prettier/prettier": "error",
+    "react/prop-types": "off"
+  },
+  "settings": {
+    "react": {
+      "version": "detect" // Automatically detect the React version
     }
   }
-  
+}

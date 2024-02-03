@@ -23,7 +23,7 @@ const SearchForm = ({ handleSubmit, setData }) => (
       <Col md="1" className="p-1 mt-2">
         <br />
         <br />
-        <Button type="submit" className="btn-lg btn-outline-primary custom-wide-btn">
+        <Button type="submit" className="btn-lg btn-outline-primary ">
           Search
         </Button>
       </Col>
