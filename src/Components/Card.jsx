@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Card, CardImg, CardBody, CardTitle, CardSubtitle, Button } from 'reactstrap';
+import { Card, CardImg, CardBody, CardTitle, CardSubtitle, Button, Row } from 'reactstrap';
 import { FaThumbsUp } from 'react-icons/fa';
 
 const ProductCard = ({ result, isDarkMode }) => {
@@ -62,23 +62,27 @@ const ProductCard = ({ result, isDarkMode }) => {
           </div>
           {result.is_best_seller && (
             <div className="text-primary mb-1 d-flex align-items-center justify-content-center">
-              Best Seller <FaThumbsUp className="ml-1" />
+              Best Seller&nbsp;
+              <FaThumbsUp className="ml-1" />
             </div>
           )}
           {result.has_prime && <div className="text-info mb-1">Prime available!</div>}
           {result.is_amazon_choice && (
             <div className="text-warning mb-1">
-              Amazon Choice <FaThumbsUp className="ml-1" />
+              Amazon Choice&nbsp;
+              <FaThumbsUp className="ml-1" />
             </div>
           )}
           {result.is_limited_deal && (
             <div className="text-success mb-1">
-              Limited Deal <FaThumbsUp className="ml-1" />
+              Limited Deal&nbsp;
+              <FaThumbsUp className="ml-1" />
             </div>
           )}
           <Button
             className={`mt-auto ${isDarkMode ? 'dark-mode' : ''}`} // mt-auto to push the button to the bottom
             color={isDarkMode ? 'outline-light' : 'outline-dark'}
+            // eslint-disable-next-line no-undef
             onClick={() => window.open(result.url, '_blank')}
           >
             View on Amazon
@@ -86,6 +90,17 @@ const ProductCard = ({ result, isDarkMode }) => {
         </CardBody>
       </Card>
     </div>
+  );
+};
+
+// eslint-disable-next-line no-unused-vars
+const ProductGrid = ({ products, isDarkMode }) => {
+  return (
+    <Row>
+      {products.map((product, index) => (
+        <ProductCard key={index} result={product} isDarkMode={isDarkMode} />
+      ))}
+    </Row>
   );
 };
 

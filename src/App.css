@@ -266,8 +266,9 @@
   margin-left: 4px;
 }
 
-.card-column {
+/* .card-column {
   flex: 1; /* Adjusts flex item's size to be flexible */
-  max-width: calc(20% - 4rem); /* Example for 4 cards in a row with a 1rem gap */
-  margin: 0.5rem; /* Provides space between cards */
-}
+  /* max-width: calc(20% - 1rem); /* Example for 4 cards in a row with a 1rem gap */
+  /* margin: 0.5rem; Provides space between cards */
+/* } */
+/*  */

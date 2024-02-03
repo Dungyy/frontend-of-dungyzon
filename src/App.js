@@ -11,7 +11,7 @@ import './App.css';
 import { useSearchData } from './hooks/fetch';
 
 function App() {
-  const [isDarkMode, setIsDarkMode] = useState(false);
+  const [isDarkMode, setIsDarkMode] = useState(true);
   const { searchResults, isLoading, currentPage, setCurrentPage, error, setQuery } = useSearchData(
     '',
     1
