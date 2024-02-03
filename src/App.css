@@ -63,7 +63,9 @@
 
 .card:hover {
   transform: translateY(-10px);
-  box-shadow: 0 32px 34px rgba(15, 207, 197, 0.808);
+  /* box-shadow: 0 32px 34px rgba(15, 207, 197, 0.808); */
+  box-shadow: 0 32px 34px rgba(0, 110, 255, 0.315);
+
 }
 
 /* .card::before {
@@ -100,7 +102,7 @@
 }
 
 .dark-mode .page-item .page-link {
-  color: rgba(15, 207, 197, 0.808);
+  color: rgba(15, 50, 207, 0.808);
 }
 
 .modal.dark-mode .modal-content {
@@ -140,14 +142,14 @@
 .search-form button {
   padding: 10px 20px;
   border-radius: 5px;
-  background-color: #4b69f0;
+  background-color: #000000;
   color: white;
   border: none;
   cursor: pointer;
 }
 
 .search-form button:hover {
-  background-color: #3658d4;
+  background-color: #000000;
 }
 
 @media (max-width: 768px) {
@@ -245,7 +247,7 @@
 
 
 .best-seller {
-  color: #1beec0; /* Gold */
+  color: #6fee1b; /* Gold */
 }
 
 .prime-available {
@@ -257,9 +259,15 @@
 }
 
 .limited-deal {
-  color: #32CD32; /* Lime green */
+  color: #32cd6d; /* Lime green */
 }
 
 .fa-thumbs-up { /* Assuming you want to style the icon as well */
   margin-left: 4px;
+}
+
+.card-column {
+  flex: 1; /* Adjusts flex item's size to be flexible */
+  max-width: calc(20% - 4rem); /* Example for 4 cards in a row with a 1rem gap */
+  margin: 0.5rem; /* Provides space between cards */
 }

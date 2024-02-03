@@ -1,7 +1,7 @@
 import React from 'react';
 import { Col, Form, FormGroup, Input, Button } from 'reactstrap';
 
-const SearchForm = ({ handleSubmit, setData }) => (
+const SearchForm = ({ handleSubmit, setData, isDarkMode }) => (
   <Form onSubmit={handleSubmit}>
     <div className="d-flex align-items-center">
       <Col md="9" className="p-0">
@@ -23,7 +23,11 @@ const SearchForm = ({ handleSubmit, setData }) => (
       <Col md="1" className="p-1 mt-2">
         <br />
         <br />
-        <Button type="submit" className="btn-lg btn-outline-primary ">
+        <Button
+          className={`mt-auto ${isDarkMode ? 'dark-mode' : ''}`} // mt-auto to push the button to the bottom
+          color={isDarkMode ? 'outline-light' : 'outline-dark'}
+          type="submit"
+        >
           Search
         </Button>
       </Col>

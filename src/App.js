@@ -11,7 +11,7 @@ import './App.css';
 import { useSearchData } from './hooks/fetch';
 
 function App() {
-  const [isDarkMode, setIsDarkMode] = useState(true);
+  const [isDarkMode, setIsDarkMode] = useState(false);
   const { searchResults, isLoading, currentPage, setCurrentPage, error, setQuery } = useSearchData(
     '',
     1
@@ -44,7 +44,11 @@ function App() {
             <br />
             <br />
             <h3 className="my-2">Search for your favorite Amazon product! :)</h3>
-            <SearchForm handleSubmit={handleSubmit} className="search-form" />
+            <SearchForm
+              handleSubmit={handleSubmit}
+              isDarkMode={isDarkMode}
+              className="search-form"
+            />
           </Col>
         </Row>
         <Row>
@@ -53,7 +57,7 @@ function App() {
               <SpinnerDiamond
                 size={200}
                 thickness={199}
-                speed={98}
+                speed={100}
                 color="#4b69f0"
                 secondaryColor="grey"
               />
