@@ -35,7 +35,7 @@ function App() {
   return (
     <div className={`App ${isDarkMode ? 'dark-mode' : 'light-mode'}`}>
       <NavbarComponent isDarkMode={isDarkMode} toggleDarkMode={toggleDarkMode} />
-      <Container>
+      <Container fluid>
         <Row className="d-flex flex-column align-items-center">
           <Col md="5" className="text-center">
             <br />

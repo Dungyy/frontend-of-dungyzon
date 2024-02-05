@@ -64,7 +64,7 @@
 .card:hover {
   transform: translateY(-10px);
   /* box-shadow: 0 32px 34px rgba(15, 207, 197, 0.808); */
-  box-shadow: 0 32px 34px rgba(0, 110, 255, 0.315);
+  box-shadow: 0 32px 34px rgba(128, 139, 153, 0.315);
 
 }
 
@@ -166,7 +166,7 @@
 .dark-mode .modal-header,
 .dark-mode .modal-body,
 .dark-mode .modal-footer {
-  border-color: #495057; /* Dark border for modal sections */
+  border-color: #496581; /* Dark border for modal sections */
 }
 
 .dark-mode .modal-header .close {
@@ -266,9 +266,43 @@
   margin-left: 4px;
 }
 
-/* .card-column {
+.card-column {
   flex: 1; /* Adjusts flex item's size to be flexible */
-  /* max-width: calc(20% - 1rem); /* Example for 4 cards in a row with a 1rem gap */
-  /* margin: 0.5rem; Provides space between cards */
-/* } */
-/*  */
+  max-width: calc(20% - 1rem); /* Example for 4 cards in a row with a 1rem gap */
+  margin: 0.5rem;  /*Provides space between cards*/
+} 
+
+@media (max-width: 768px) {
+  .card-column {
+    flex: 1; /* Adjusts flex item's size to be flexible */
+    max-width: calc(50% - 1rem); /* Example for 4 cards in a row with a 1rem gap */
+    margin: 0.5rem;  /*Provides space between cards*/
+  } 
+}
+
+
+@media (max-width: 500px) {
+  .card-column {
+    flex: 1 1 100%; /* Cards take full width on small screens */
+    margin: 0; /* Remove margins if needed */
+  }
+}
+
+.cards-container {
+  margin: 0; /* Remove any additional margin */
+}
+
+@media (max-width: 400) {
+  .hide-on-mobile {
+    display: none;
+  }
+}
+
+html {
+  min-height: 100%;
+  margin: 0;
+}
+body {
+  min-height: 100%;
+  margin: 0;
+}

@@ -41,7 +41,7 @@ const ProductCard = ({ result, isDarkMode }) => {
           className="card-img-top img-fluid p-3"
           style={{ height: '200px', objectFit: 'cover' }} // Use cover for a better fit if images are similar ratios
         />
-        <CardBody className="d-flex flex-column p-3">
+        <CardBody className="d-flex flex-column p-md-3 p-2">
           <CardTitle
             tag="h5"
             className="card-title mb-2"

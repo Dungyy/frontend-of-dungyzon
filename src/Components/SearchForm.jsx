@@ -13,7 +13,7 @@ const SearchForm = ({ handleSubmit, setData, isDarkMode }) => (
             type="text"
             name="searchInput"
             id="searchInput"
-            placeholder="Search..."
+            placeholder="Search for anything..."
             onChange={(event) => {
               setData(event.target.value);
             }}
