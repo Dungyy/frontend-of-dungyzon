@@ -3,7 +3,7 @@ import '../App.css';
 
 const Footer = () => {
   return (
-    <footer className="fixed-footer">
+    <footer className="d-flex flex-column align-items-center">
       <p>Copyright &copy; {new Date().getFullYear()} Dungyzon</p>
     </footer>
   );

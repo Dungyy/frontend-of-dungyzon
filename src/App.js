@@ -12,16 +12,14 @@ import { useSearchData } from './hooks/fetch';
 
 function App() {
   const [isDarkMode, setIsDarkMode] = useState(true);
+
   const { searchResults, isLoading, currentPage, setCurrentPage, error, setQuery } = useSearchData(
     '',
     1
   );
 
-  const handleSubmit = (event) => {
-    event.preventDefault();
-    const formData = new FormData(event.target);
-    const searchData = formData.get('searchInput');
-    setQuery(searchData);
+  const handleSubmit = (searchTerm) => {
+    setQuery(searchTerm);
   };
 
   const handlePageChange = (page) => {

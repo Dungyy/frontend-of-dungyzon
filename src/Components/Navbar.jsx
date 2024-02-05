@@ -30,19 +30,22 @@ const NavbarComponent = ({ isDarkMode, toggleDarkMode }) => {
         size="xl"
         fixed="top"
       >
-        <NavbarBrand style={{ fontSize: '21px' }} href="/">
+        <NavbarBrand style={{ fontSize: '21px', text: 'bold' }} href="/">
           DUNGYZON
         </NavbarBrand>
         <Nav className="ml-auto togglebutton" navbar>
           <NavItem>
-            <NavLink style={{ fontSize: '21px' }} href="#" onClick={toggleDarkMode}>
+            <NavLink style={{ fontSize: '21px', text: 'bold' }} href="#" onClick={toggleDarkMode}>
               {isDarkMode ? '💡 Light Mode' : '🌛 Dark Mode'}
             </NavLink>
           </NavItem>
         </Nav>
         <Nav className="ml-auto" navbar>
           <NavItem>
-            <NavLink style={{ fontSize: '21px', cursor: 'pointer' }} onClick={toggleModal}>
+            <NavLink
+              style={{ fontSize: '21px', cursor: 'pointer', text: 'bold' }}
+              onClick={toggleModal}
+            >
               ABOUT
             </NavLink>
           </NavItem>

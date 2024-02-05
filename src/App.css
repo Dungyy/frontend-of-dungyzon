@@ -278,6 +278,11 @@
     max-width: calc(50% - 1rem); /* Example for 4 cards in a row with a 1rem gap */
     margin: 0.5rem;  /*Provides space between cards*/
   } 
+  .search-form {
+    display: flex;
+    justify-content: center;
+    margin-top: 20px;
+  }
 }
 
 
@@ -285,6 +290,11 @@
   .card-column {
     flex: 1 1 100%; /* Cards take full width on small screens */
     margin: 0; /* Remove margins if needed */
+  }
+  .search-form {
+    display: flex;
+    justify-content: center;
+    margin-top: 20px;
   }
 }
 
@@ -296,6 +306,11 @@
   .hide-on-mobile {
     display: none;
   }
+  .search-form {
+    display: flex;
+    justify-content: center;
+    margin-top: 20px;
+  }
 }
 
 html {
@@ -306,3 +321,12 @@ body {
   min-height: 100%;
   margin: 0;
 }
+
+body, html {
+  overflow-x: hidden;
+}
+
+/* Remove this line after debugging */
+/* * {
+  border: 1px solid red;
+} */
