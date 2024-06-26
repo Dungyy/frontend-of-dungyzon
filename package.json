@@ -17,7 +17,8 @@
     "react-tsparticles": "^2.12.2",
     "reactstrap": "^9.2.2",
     "spinners-react": "^1.0.7",
-    "web-vitals": "^2.1.4"
+    "web-vitals": "^2.1.4",
+    "ws": "^8.17.1"
   },
   "scripts": {
     "start": "cross-env NODE_ENV=production react-scripts start",
