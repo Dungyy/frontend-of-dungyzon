@@ -213,7 +213,7 @@ const ProductCard = ({ result, isDarkMode }) => {
                   />
                 </div>
                 <div className="modal-product-info">
-                  <h4 className="modal-product-title">{result.name}</h4>
+                  {/* <h4 className="modal-product-title">{result.name}</h4> */}
                   <p className="modal-product-price text-success">{result.price_string}</p>
                   <div className="d-flex align-items-center justify-content-end">
                     {generateStars(result.stars)}
