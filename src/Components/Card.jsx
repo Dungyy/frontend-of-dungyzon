@@ -16,23 +16,24 @@ import { URL } from '../global';
 import axios from 'axios';
 import { SpinnerDiamond } from 'spinners-react';
 
+const renderStars = (rating) => {
+  const stars = [];
+  for (let i = 1; i <= 5; i++) {
+    if (i <= rating) {
+      stars.push(<FaStar key={i} className="text-warning" />);
+    } else if (i - 0.5 <= rating) {
+      stars.push(<FaStarHalfAlt key={i} className="text-warning" />);
+    } else {
+      stars.push(<FaRegStar key={i} className="text-warning" />);
+    }
+  }
+  return stars;
+};
+
 const ReviewSection = ({ review, type, isDarkMode }) => {
   if (!review) return null;
 
-  const renderStars = (rating) => {
-    const stars = [];
-    for (let i = 1; i <= 5; i++) {
-      if (i <= rating) {
-        stars.push(<FaStar key={i} className="text-warning" />);
-      } else if (i - 0.5 <= rating) {
-        stars.push(<FaStarHalfAlt key={i} className="text-warning" />);
-      } else {
-        stars.push(<FaRegStar key={i} className="text-warning" />);
-      }
-    }
-    return stars;
-  };
-
+  console.log(review);
   return (
     <div
       className={`review-section mb-4 p-3 border rounded ${isDarkMode ? 'bg-dark text-light' : 'bg-light'}`}
@@ -46,10 +47,28 @@ const ReviewSection = ({ review, type, isDarkMode }) => {
         <strong>{review.title}</strong>
       </div>
       <p className={`small ${isDarkMode ? 'text-light' : 'text-muted'}`}>
-        By <strong>{review.username}</strong> on {review.date}
+        By{' '}
+        <a href={review.reviewUrl} target="_blank" rel="noopener noreferrer">
+          <strong style={{ color: 'grey' }}>{review.username}</strong>
+        </a>{' '}
+        on {review.date}
         {review.verified_purchase && <span className="ml-2 text-success">Verified Purchase</span>}
       </p>
+
       <p>{review.review}</p>
+      {review.images && review.images.length > 0 && (
+        <div className="review-images mt-2">
+          {review.images.map((img, index) => (
+            <img
+              key={index}
+              src={img}
+              alt={`Review image ${index + 1}`}
+              className="mr-2 mb-2"
+              style={{ maxWidth: '100px', height: 'auto' }}
+            />
+          ))}
+        </div>
+      )}
       {review.images && review.images.length > 0 && (
         <div className="review-images mt-2">
           {review.images.map((img, index) => (
@@ -103,19 +122,6 @@ const ProductCard = ({ result, isDarkMode }) => {
     return title.length > 50 ? `${title.substring(0, 50)}...` : title;
   };
 
-  // Generate stars for accessibility
-  const generateStars = (rating) => {
-    return Array.from({ length: 5 }, (_, index) => (
-      <span
-        key={index}
-        className={`star ${index < Math.floor(rating) ? 'filled' : ''}`}
-        aria-hidden="true"
-      >
-        ⭐️
-      </span>
-    ));
-  };
-
   return (
     <div className={`card-column mb-4 ${isDarkMode ? 'bg-dark' : ''}`} key={result.position}>
       <Card className={`card text-center h-100 ${isDarkMode ? 'bg-dark text-light' : ''}`}>
@@ -140,7 +146,7 @@ const ProductCard = ({ result, isDarkMode }) => {
             {result.price_string}
           </CardSubtitle>
           <div className="mb-2 d-flex justify-content-center align-items-center">
-            {generateStars(result.stars)}
+            {renderStars(result.stars)}
             <span className="ml-2">({result.total_reviews || 0})</span>
           </div>
           {result.is_best_seller && (
@@ -216,7 +222,7 @@ const ProductCard = ({ result, isDarkMode }) => {
                   {/* <h4 className="modal-product-title">{result.name}</h4> */}
                   <p className="modal-product-price text-success">{result.price_string}</p>
                   <div className="d-flex align-items-center justify-content-end">
-                    {generateStars(result.stars)}
+                    {renderStars(result.stars)}
                     <span className="ml-2">({result.total_reviews} reviews)</span>
                   </div>
                   {result.is_best_seller && (
