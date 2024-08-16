@@ -330,3 +330,31 @@ body, html {
 /* * {
   border: 1px solid red;
 } */
+
+.modal-product-details {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  margin-bottom: 1rem;
+}
+
+.modal-product-image {
+  width: 200px;
+  flex-shrink: 0;
+}
+
+.modal-product-info {
+  flex-grow: 1;
+  text-align: right;
+  padding-left: 1rem;
+}
+
+.modal-product-title {
+  font-size: 1.25rem;
+  margin-bottom: 0.5rem;
+}
+
+.modal-product-price {
+  font-size: 1.5rem;
+  font-weight: bold;
+}

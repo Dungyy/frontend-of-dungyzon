@@ -53,18 +53,26 @@ const NavbarComponent = ({ isDarkMode, toggleDarkMode }) => {
       </Navbar>
 
       <Modal isOpen={modal} toggle={toggleModal} contentClassName={contentClass}>
-        <ModalHeader tag={'h3'} toggle={toggleModal}>
+        <ModalHeader
+          tag={'h3'}
+          toggle={toggleModal}
+          className={isDarkMode ? 'bg-dark text-light' : ''}
+        >
           What is Dungyzon?
         </ModalHeader>
-        <ModalBody tag={'h4'}>
+        <ModalBody className={isDarkMode ? 'bg-dark text-light' : ''} tag={'h4'}>
           Dungyzon is your reliable buddy for Amazon product searches. It uses smart web scraping
           tech to fetch info from all over the internet, delivering you product details in decent
           time. With Dungyzon, you get quick, accurate results in a user-friendly format. Think of
           it as your hassle-free, shortcut route to the Amazon products you need. Less time
           searching, more time shopping!
         </ModalBody>
-        <ModalFooter>
-          <Button color={isDarkMode ? 'outline-light' : 'outline-dark'} onClick={toggleModal}>
+        <ModalFooter className={isDarkMode ? 'bg-dark' : ''}>
+          <Button
+            className={`${isDarkMode ? 'btn-outline-light' : 'btn-outline-dark'}`}
+            color={isDarkMode ? 'outline-light' : 'outline-dark'}
+            onClick={toggleModal}
+          >
             Close
           </Button>
         </ModalFooter>
