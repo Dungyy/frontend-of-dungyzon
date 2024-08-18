@@ -11,86 +11,12 @@ import {
   ModalBody,
   ModalFooter,
 } from 'reactstrap';
-import { FaThumbsUp, FaStar, FaStarHalfAlt, FaRegStar } from 'react-icons/fa';
+import { FaThumbsUp } from 'react-icons/fa';
 import { URL } from '../global';
 import axios from 'axios';
 import { SpinnerDiamond } from 'spinners-react';
-
-const renderStars = (rating) => {
-  const stars = [];
-  for (let i = 1; i <= 5; i++) {
-    if (i <= rating) {
-      stars.push(<FaStar key={i} className="text-warning" />);
-    } else if (i - 0.5 <= rating) {
-      stars.push(<FaStarHalfAlt key={i} className="text-warning" />);
-    } else {
-      stars.push(<FaRegStar key={i} className="text-warning" />);
-    }
-  }
-  return stars;
-};
-
-const ReviewSection = ({ review, type, isDarkMode }) => {
-  if (!review) return null;
-
-  console.log(review);
-  return (
-    <div
-      className={`review-section mb-4 p-3 border rounded ${isDarkMode ? 'bg-dark text-light' : 'bg-light'}`}
-    >
-      <h5 className={`mb-3 ${type === 'positive' ? 'text-success' : 'text-danger'}`}>
-        {type === 'positive' ? 'Top Positive Review' : 'Top Critical Review'}
-      </h5>
-      <div className="d-flex align-items-center mb-2">
-        <div className="mr-2">{renderStars(review.stars)}</div>
-        &nbsp;
-        <strong>{review.title}</strong>
-      </div>
-      <p className={`small ${isDarkMode ? 'text-light' : 'text-muted'}`}>
-        By{' '}
-        <a href={review.reviewUrl} target="_blank" rel="noopener noreferrer">
-          <strong style={{ color: 'grey' }}>{review.username}</strong>
-        </a>{' '}
-        on {review.date}
-        {review.verified_purchase && <span className="ml-2 text-success">Verified Purchase</span>}
-      </p>
-
-      <p>{review.review}</p>
-      {review.images && review.images.length > 0 && (
-        <div className="review-images mt-2">
-          {review.images.map((img, index) => (
-            <img
-              key={index}
-              src={img}
-              alt={`Review image ${index + 1}`}
-              className="mr-2 mb-2"
-              style={{ maxWidth: '100px', height: 'auto' }}
-            />
-          ))}
-        </div>
-      )}
-      {review.images && review.images.length > 0 && (
-        <div className="review-images mt-2">
-          {review.images.map((img, index) => (
-            <img
-              key={index}
-              src={img}
-              alt={`Review image ${index + 1}`}
-              className="mr-2 mb-2"
-              style={{ maxWidth: '100px', height: 'auto' }}
-            />
-          ))}
-        </div>
-      )}
-      {review.manufacturer_replied && (
-        <div className={`manufacturer-reply mt-3 p-2 ${isDarkMode ? 'bg-secondary' : 'bg-light'}`}>
-          <strong>Manufacturer Response:</strong>
-          <p className="mb-0">{review.manufacturer_reply}</p>
-        </div>
-      )}
-    </div>
-  );
-};
+import ReviewSection from './ReviewSection';
+import { renderStars, ErrorMessage } from './utils/utils';
 
 const ProductCard = ({ result, isDarkMode }) => {
   // State to handle hover effect on the title
@@ -207,7 +133,12 @@ const ProductCard = ({ result, isDarkMode }) => {
               />
             </div>
           )}
-          {error && <p className="text-danger">Error loading details: {error}</p>}
+          {error && (
+            <ErrorMessage
+              message="Error with detail info, Please try at a later time"
+              isDarkMode={isDarkMode}
+            />
+          )}
           {productDetails && (
             <div>
               <div className="modal-product-details">
@@ -259,7 +190,10 @@ const ProductCard = ({ result, isDarkMode }) => {
                   />
                 </>
               ) : (
-                <p>No reviews at this time</p>
+                <ErrorMessage
+                  message="Top rated reviews not found at this time, Please try at a later time"
+                  isDarkMode={isDarkMode}
+                />
               )}
             </div>
           )}

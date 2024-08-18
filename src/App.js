@@ -9,6 +9,7 @@ import ProductCard from './Components/Card';
 import Footer from './Components/Footer';
 import './App.css';
 import { useSearchData } from './hooks/fetch';
+import { ErrorMessage } from './Components/utils/utils';
 
 function App() {
   const [isDarkMode, setIsDarkMode] = useState(true);
@@ -60,7 +61,7 @@ function App() {
                 secondaryColor="grey"
               />
             ) : error ? (
-              <p>Please try at a later time</p>
+              <ErrorMessage message="Please try at a later time" isDarkMode={isDarkMode} />
             ) : searchResults.length > 0 ? (
               <div className="cards-container">
                 {searchResults.map((result) => (
