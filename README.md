@@ -1,7 +1,9 @@
 
 # Dingyzon
 
-![image](https://user-images.githubusercontent.com/88725477/226798980-c50c88d5-2234-4e9d-902c-be9ec156688b.png)
+![image](./public/dungyzon-final.png)
+<!-- ![alt text](./public/dungyzon-search.png)
+![alt text](./public/dungyzon-reviews.png) -->
 
 
 ## [Live Site](https://dungyzon.netlify.app/)
@@ -27,7 +29,7 @@ git clone https://github.com/Dungyy/frontend-of-dungyzon.git
 Once the GitHub repo is cloned, change the directory into frontend-of-dungyzon and run the following command:
 
 ```
-npm install i
+npm i
 ```
 
 After all packages have been downloaded, proceed with the final steps below.
@@ -44,7 +46,7 @@ Go to
 ```
 http://localhost:3000
 ```
-You should be viewing Dingyzon!
+You should be viewing Dungyzon!
 
 
 ## Thank You!
