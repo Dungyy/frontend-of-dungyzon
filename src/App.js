@@ -11,6 +11,7 @@ const SearchForm = React.lazy(() => import('./Components/SearchForm'));
 const PaginationComponent = React.lazy(() => import('./Components/Pagination'));
 const ProductCard = React.lazy(() => import('./Components/Card'));
 const Footer = React.lazy(() => import('./Components/Footer'));
+const { ScrollToTopButton } = require('./Components/utils/utils');
 
 // Hooks and utilities
 import { useSearchData } from './hooks/fetch';
@@ -371,7 +372,6 @@ function App() {
             <small>⚠️ You&apos;re offline. Some features may not work properly.</small>
           </Alert>
         )}
-
         {/* Navigation */}
         <Suspense fallback={<div className="navbar-skeleton"></div>}>
           <NavbarComponent
@@ -381,7 +381,6 @@ function App() {
             onHistoryItemClick={handleSubmit}
           />
         </Suspense>
-
         <Container fluid className="main-container">
           {/* Hero Section */}
           <Row className="hero-section">
@@ -473,7 +472,7 @@ function App() {
                     {ProductCards}
 
                     {/* Enhanced Pagination */}
-                    {totalPages > 1 && (
+                    {totalPages > 0 && (
                       <Suspense fallback={<div className="pagination-skeleton"></div>}>
                         <PaginationComponent
                           currentPage={currentPage}
@@ -524,12 +523,11 @@ function App() {
             </Col>
           </Row>
         </Container>
-
+        <ScrollToTopButton isDarkMode={isDarkMode} />
         {/* Footer */}
         <Suspense fallback={<div className="footer-skeleton"></div>}>
           <Footer isDarkMode={isDarkMode} />
         </Suspense>
-
         {/* Enhanced Toast Notifications */}
         <div className="toast-container position-fixed bottom-0 end-0 p-3">
           <Toast isOpen={showToast} toggle={() => setShowToast(false)}>

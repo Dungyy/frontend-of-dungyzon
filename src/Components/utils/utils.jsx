@@ -1,23 +1,63 @@
 // utils/utils.js - Fixed version compatible with your existing code
-import React from 'react';
-import { FaStar, FaStarHalfAlt, FaRegStar } from 'react-icons/fa';
+import React, { useState, useEffect } from 'react';
+import { FaStar, FaStarHalfAlt, FaRegStar, FaArrowUp } from 'react-icons/fa';
 import { Alert } from 'reactstrap';
 
 // FIXED: Simple star rendering function (no memo wrapper for compatibility)
 export const renderStars = (rating) => {
   const stars = [];
   const numericRating = parseFloat(rating) || 0;
+  const clampedRating = Math.max(0, Math.min(5, numericRating));
 
   for (let i = 1; i <= 5; i++) {
-    if (i <= numericRating) {
+    if (i <= clampedRating) {
       stars.push(<FaStar key={i} className="text-warning" />);
-    } else if (i - 0.5 <= numericRating) {
+    } else if (i - 0.5 <= clampedRating) {
       stars.push(<FaStarHalfAlt key={i} className="text-warning" />);
     } else {
       stars.push(<FaRegStar key={i} className="text-warning" />);
     }
   }
   return stars;
+};
+
+// Scroll to Top Button Component
+export const ScrollToTopButton = ({ isDarkMode }) => {
+  const [showButton, setShowButton] = useState(false);
+
+  useEffect(() => {
+    const handleScroll = () => {
+      setShowButton(window.pageYOffset > 500);
+    };
+
+    window.addEventListener('scroll', handleScroll);
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
+
+  const scrollToTop = () => {
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  };
+
+  if (!showButton) return null;
+
+  return (
+    <button
+      onClick={scrollToTop}
+      className={`btn ${isDarkMode ? 'btn-light' : 'btn-primary'} position-fixed rounded-circle shadow-lg`}
+      style={{
+        bottom: '100px',
+        right: '20px',
+        width: '50px',
+        height: '50px',
+        zIndex: 1000,
+        transition: 'all 0.3s ease',
+      }}
+      title="Scroll to top"
+      aria-label="Scroll to top"
+    >
+      <FaArrowUp size="1.5em" />
+    </button>
+  );
 };
 
 // FIXED: Simple error message component (no memo wrapper for compatibility)

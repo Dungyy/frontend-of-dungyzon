@@ -1,5 +1,5 @@
 import React, { memo, useMemo, useCallback } from 'react';
-import { Row, Col, Pagination, PaginationItem, PaginationLink, Button } from 'reactstrap';
+import { Row, Col, Pagination, PaginationItem, PaginationLink } from 'reactstrap';
 import { FaAngleLeft, FaAngleRight, FaAngleDoubleLeft, FaAngleDoubleRight } from 'react-icons/fa';
 
 const PaginationComponent = memo(
@@ -200,26 +200,6 @@ const PaginationComponent = memo(
                 </PaginationLink>
               </PaginationItem>
             </Pagination>
-
-            {/* Quick navigation */}
-            <div className="quick-nav mt-3 d-flex justify-content-center gap-2">
-              <Button
-                size="sm"
-                color={isDarkMode ? 'outline-light' : 'outline-primary'}
-                onClick={() => handlePageClick(Math.max(1, currentPage - 5))}
-                disabled={currentPage <= 5}
-              >
-                -5
-              </Button>
-              <Button
-                size="sm"
-                color={isDarkMode ? 'outline-light' : 'outline-primary'}
-                onClick={() => handlePageClick(Math.min(totalPages, currentPage + 5))}
-                disabled={currentPage >= totalPages - 4}
-              >
-                +5
-              </Button>
-            </div>
           </div>
         </Col>
       </Row>
