@@ -456,7 +456,7 @@ const ProductCard = ({ result, isDarkMode, lazyLoad = false }) => {
             {result.original_price && result.original_price.price_string && (
               <span className="d-flex align-items-center">
                 <span
-                  className="text-muted text-decoration-line-through me-2"
+                  className={`text-decoration-line-through me-2 ${isDarkMode ? 'text-secondary' : 'text-muted'}`}
                   style={{ fontSize: '0.85em' }}
                 >
                   {result.original_price.price_string}
